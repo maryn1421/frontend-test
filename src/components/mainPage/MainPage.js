@@ -14,10 +14,12 @@ const MainPage = () => {
     };
 
     function myFunction() {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             console.log("more")
-        } else {
-            console.log("less")
+            if (colorsDisplay) {
+                setColorsDisplay(data)
+                window.onscroll = null;
+            }
         }
     }
 
