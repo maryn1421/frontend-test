@@ -1,3 +1,20 @@
-.colorCard__main {
-    height: 100px;
+
+
+@media (max-width: 376px) {
+    .colorCard__main {
+        height: auto;
+    }
+
+    .colorCard__viewAndVotesContainer {
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #297fb7;
+        width: 180px;
+    }
+
+    .colorCard__title {
+        font-size: 20px;
+    }
+
+
 }

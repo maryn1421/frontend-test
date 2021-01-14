@@ -1,0 +1,14 @@
+.MainPage__mainContainer {
+    background-color: #2d98de;
+}
+
+body {
+    color: white;
+    text-align: center;
+}
+
+
+
+@media (max-width: 376px) {
+
+}

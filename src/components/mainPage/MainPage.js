@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import ColorCard from "../colorCard/ColorCard";
-
+import './mainPage.css'
 
 const MainPage = () => {
     const [data, setData] = useState([]);
@@ -40,9 +40,9 @@ const MainPage = () => {
 
 
     return <div className="MainPage__mainContainer">
-        {colorsDisplay.map(color => {
-            console.log(color)
-           return  <ColorCard username={color.userName} />
+        {colorsDisplay.map(palette => {
+            console.log(palette)
+           return  <ColorCard palette={palette} />
         })}
 
     </div>
