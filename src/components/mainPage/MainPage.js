@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import ColorCard from "../colorCard/ColorCard";
 
 
 const MainPage = () => {
@@ -8,39 +9,45 @@ const MainPage = () => {
     const url = "http://www.colourlovers.com/api/palettes/new?format=json";
 
 
-
-
-    window.onscroll = function() {myFunction()};
+    window.onscroll = function () {
+        myFunction()
+    };
 
     function myFunction() {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-            console.log("test1")
-        } else {
-            console.log("test2")
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            console.log("more")
+            if (colorsDisplay) {
+                setColorsDisplay(data)
+                window.onscroll = null;
+            }
         }
     }
 
 
-
-        useEffect(() => {
-            axios.get(url, {}).then((res) => {
-                setData(res.data)
-            })
-        }, [])
-
-
-        if (data) {
-            console.log(data)
-        }
+    useEffect(() => {
+        axios.get(url, {}).then((res) => {
+            setData(res.data)
+        })
+    }, [])
 
 
-        return <div className="MainPage__mainContainer">
+    useEffect(() => {
+        setColorsDisplay(data.slice(0, 10))
+    }, [data])
 
 
-        </div>
-
-    }
+    console.log(colorsDisplay)
 
 
+    return <div className="MainPage__mainContainer">
+        {colorsDisplay.map(color => {
+            console.log(color)
+           return  <ColorCard username={color.userName} />
+        })}
 
-    export default MainPage;
+    </div>
+
+}
+
+
+export default MainPage;
